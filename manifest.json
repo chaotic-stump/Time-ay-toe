@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Time-ay-toe",
+  "version": "1.0",
+
+  "description": "Adds a purple border to all webpages matching seanparker.dev",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "sidebar_action": {
+    "default_title": "Time-ay-toe productivity timer",
+    "default_panel": "timer.html",
+    "default_icon": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["timer.js"]
+    }
+  ]
+}
