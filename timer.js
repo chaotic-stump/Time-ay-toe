@@ -1,8 +1,16 @@
-let title = document.getElementById("timer-title");
-let timer = document.getElementById("timer");
+let title = document.queryBySelector("#timer-title");
+let timer = document.queryBySelector("#timer");
 
-title.innerText = "hooked up!"
+
+function buildStartTimer(stage) {
+  title.innerText = stage + ":00"
+}
+
+// title.innerText = buildStartTimer(shortBreak);
+
+buildStartTimer(shortBreak);
 // timer.innerText = "30:00"
 
 let pomoDoro = 25;
-timer.innerText = pomoDoro + ":00"
+let shortBreak = 5;
+let longBreak = 10;
