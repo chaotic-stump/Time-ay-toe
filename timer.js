@@ -74,5 +74,5 @@ let resetTimer = () => {
 };
 
 
-
+startButton.addEventListener("click", startTimer);
 timerOptions.addEventListener("change", updateTimerFromDropdown);
