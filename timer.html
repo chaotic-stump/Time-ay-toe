@@ -7,20 +7,22 @@
   </head>
 
 <body>
-  <div id = "content">
-    <div id="controls">
-      <button>Start</button>
-      <button>Pomodoro</button>
-      <button>Short Break</button>
-      <button>Long Break</button>
-    </div>
     
     <h1 id="timer-title">Time-ay-toe</h1>
+    <p id="selected-stage">Pomodoro: </p>
     <p id="timer">00:00</p>
+
+    <div id="controls">
+      <select id="timer-options">
+        <option value="pomodoro">Pomodoro</option>
+        <option value="shortBreak">Short Break</option>
+        <option value="longBreak">Long Break</option>
+      </select>
+      <button id="start-button" onclick="startTimer()">Start</button>
+    </div>
+
     <div class="progress">
-      <div class="bar">
-        
-      </div>
+      <div class="bar"></div>
     </div>
 
   </div>
