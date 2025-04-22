@@ -1,4 +1,8 @@
-# Doing Firefox's [Add-on tutorial](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension) to start some ideas I have around their sidebar (and new vertical tabs) feature.
+# Time-ay-toe: A pomodoro timer for the Firefox Sidebar.
 
-- just adds a purple border to my portfolio site (for now)
-- prep work for a FF sidebar extension
+To Dos:
+- [x] Get progress bar working
+- [x] Countdown timer
+- [x] stage selector
+- [] Sequence stages to be proper pomodoro timer
+- [] conditional styles per stage
