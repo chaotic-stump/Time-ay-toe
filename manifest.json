@@ -6,13 +6,13 @@
   "description": "Adds a purple border to all webpages matching seanparker.dev",
 
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/timer.png"
   },
 
   "sidebar_action": {
     "default_title": "Time-ay-toe productivity timer",
     "default_panel": "timer.html",
-    "default_icon": "icons/border-48.png"
+    "default_icon": "icons/timer.png"
   },
 
   "content_scripts": [
