@@ -5,6 +5,8 @@ let timerOptions = document.querySelector("#timer-options");
 let startButton = document.querySelector("#start-button");
 let progressBar = document.querySelector(".bar");
 
+let paused = true;
+
 let durations = {
   pomodoro: 25,
   shortBreak: 1,
@@ -28,6 +30,13 @@ let updateTimerFromDropdown = () => {
 };
 
 updateTimerFromDropdown();
+
+let togglePlayBtn = () => {
+  console.log("togglePlayBtn");
+  console.log("paused:", paused);
+  paused ? startTimer() : pauseTimer();
+  paused = !paused;
+}
 
 let startTimer = () => {
   clearInterval(countdownInterval);
@@ -74,5 +83,5 @@ let resetTimer = () => {
 };
 
 
-startButton.addEventListener("click", startTimer);
+startButton.addEventListener("click", togglePlayBtn);
 timerOptions.addEventListener("change", updateTimerFromDropdown);
