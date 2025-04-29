@@ -34,7 +34,7 @@ updateTimerFromDropdown();
 let togglePlayBtn = () => {
   console.log("togglePlayBtn");
   console.log("paused:", paused);
-  paused ? startTimer() : pauseTimer();
+  !paused ? startTimer() : pauseTimer();
   paused = !paused;
 }
 
