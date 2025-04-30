@@ -6,6 +6,7 @@ let startButton = document.querySelector("#start-button");
 let progressBar = document.querySelector(".bar");
 
 let paused = true;
+console.log("global paused:", paused);
 
 let durations = {
   pomodoro: 25,
