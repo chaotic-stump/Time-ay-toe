@@ -2,7 +2,7 @@ let title = document.querySelector("#timer-title");
 let timer = document.querySelector("#timer");
 let seletedStage = document.querySelector("#selected-stage");
 let timerOptions = document.querySelector("#timer-options");
-let startButton = document.querySelector("#start-button");
+let playButton = document.querySelector("#play-pause");
 let progressBar = document.querySelector(".bar");
 
 let paused = true;
@@ -23,9 +23,21 @@ let countdownInterval;
 
 let updateTimerDisplay = (minutes, seconds) => {
   timer.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  remainingMinutes = minutes;
+  remainingSeconds = seconds;
 }
 
+let pauseTimer = () => {
+  paused = true;
+  clearInterval(countdownInterval);
+};
+
 let updateTimerFromDropdown = () => {
+  if (!paused) {
+    playButton.click();
+  } 
+  progressBar.style.width = `0%`;
+  pauseTimer();
   seletedStage.innerText = timerOptions.options[timerOptions.selectedIndex].text;
   let selectedTime = timerOptions.value;
   let minutes = durations[selectedTime];
@@ -37,11 +49,10 @@ let updateTimerFromDropdown = () => {
 updateTimerFromDropdown();
 
 let togglePlayBtn = (event) => {
-  event.stopPropagation();
   console.log("togglePlayBtn");
   console.log("paused:", paused);
-  !paused ? startTimer() : pauseTimer();
   paused = !paused;
+  !paused ? startTimer() : pauseTimer();
 }
 
 let startTimer = () => {
@@ -85,11 +96,7 @@ let startTimer = () => {
     clearInterval(countdownInterval);}
 };
 
-let pauseTimer = () => {
-  clearInterval(countdownInterval);
-};
 
 
-// startButton.removeEventListener("click", togglePlayBtn);
-startButton.addEventListener("click", togglePlayBtn);
+playButton.addEventListener("click", togglePlayBtn);
 timerOptions.addEventListener("change", updateTimerFromDropdown);

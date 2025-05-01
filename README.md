@@ -6,4 +6,5 @@ To Dos:
 - [x] stage selector
 - [] Sequence stages to be proper pomodoro timer
 - [] conditional styles per stage
-- [] toggleable start/pause button with icons
+- [x] toggleable start/pause button with icons
+- [x] update states if dropdown is picked
