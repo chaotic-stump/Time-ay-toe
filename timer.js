@@ -6,6 +6,10 @@ let startButton = document.querySelector("#start-button");
 let progressBar = document.querySelector(".bar");
 
 let paused = true;
+
+let remainingMinutes = 0;
+let remainingSeconds = 0;
+
 console.log("global paused:", paused);
 
 let durations = {
@@ -32,7 +36,8 @@ let updateTimerFromDropdown = () => {
 
 updateTimerFromDropdown();
 
-let togglePlayBtn = () => {
+let togglePlayBtn = (event) => {
+  event.stopPropagation();
   console.log("togglePlayBtn");
   console.log("paused:", paused);
   !paused ? startTimer() : pauseTimer();
@@ -42,47 +47,49 @@ let togglePlayBtn = () => {
 let startTimer = () => {
   clearInterval(countdownInterval);
 
+  // Use the remaining time if resuming, otherwise initialize from dropdown
   let selectStage = timerOptions.value;
-  let minutes = durations[selectStage];
-  let seconds = 0;
+  let minutes = remainingMinutes > 0 || remainingSeconds > 0 ? remainingMinutes : durations[selectStage];
+  let seconds = remainingSeconds > 0 ? remainingSeconds : 0;
+
   let elapsedTime = 0;
   let totalTime = minutes * 60 + seconds;
 
-  updateTimerDisplay(minutes, seconds);
+  if (!paused) {
+    countdownInterval = setInterval(() => {
+      elapsedTime++;
+      let progress = (elapsedTime / totalTime) * 100;
+      progressBar.style.width = `${progress}%`;
 
-  countdownInterval = setInterval(() => {
-    elapsedTime++;
-    console.log(elapsedTime);
-    let progress = (elapsedTime / totalTime) * 100;
-    progressBar.style.width = `${progress}%`;
-
-    if (seconds === 0) {
-      if (minutes === 0) {
-        clearInterval(countdownInterval);
-        progressBar.style.width = `100%`;
-        progressBar.style.borderRadius = `3px`;
-        alert("Time's up!");
-        return;
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(countdownInterval);
+          progressBar.style.width = `100%`;
+          progressBar.style.borderRadius = `3px`;
+          alert("Time's up!");
+          return;
+        }
+        minutes--;
+        seconds = 59;
+      } else {
+        seconds--;
       }
-      minutes--;
-      seconds = 59;
-    } else {
-      seconds--;
-    }
 
-    updateTimerDisplay(minutes, seconds);
-  }, 1000);
+      // Update the remaining time
+      remainingMinutes = minutes;
+      remainingSeconds = seconds;
+
+      updateTimerDisplay(minutes, seconds);
+    }, 1000);
+  } else {
+    clearInterval(countdownInterval);}
 };
 
 let pauseTimer = () => {
   clearInterval(countdownInterval);
 };
 
-let resetTimer = () => {
-  clearInterval(countdownInterval);
-  timer.innerText = "00:00";
-};
 
-
+// startButton.removeEventListener("click", togglePlayBtn);
 startButton.addEventListener("click", togglePlayBtn);
 timerOptions.addEventListener("change", updateTimerFromDropdown);
