@@ -4,7 +4,9 @@ To Dos:
 - [x] Get progress bar working
 - [x] Countdown timer
 - [x] stage selector
-- [] Sequence stages to be proper pomodoro timer
-- [] conditional styles per stage
 - [x] toggleable start/pause button with icons
 - [x] update states if dropdown is picked
+- [] Style things up to look better
+- [] conditional styles per stage
+- [] Sequence stages to be proper pomodoro timer
+- [] Counter for how many pomodoros user achieved in a day
