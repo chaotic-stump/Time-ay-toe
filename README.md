@@ -10,3 +10,8 @@ To Dos:
 - [] conditional styles per stage
 - [] Sequence stages to be proper pomodoro timer
 - [] Counter for how many pomodoros user achieved in a day
+
+Long term:
+- [] To do list
+- [] general notes
+- [] Other productivity tools
